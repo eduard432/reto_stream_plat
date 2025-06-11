@@ -18,13 +18,14 @@ class Streaming {
         Streaming();
         ~Streaming();
         bool cargarCsv(std::string fileName);
+        void mostrarVideos() const;
         void reAlocar(unsigned int nuevaCapacidad);
-        void agregarVideo(Video video);
-        Video getVideo(unsigned int index);
+        // void agregarVideo(Video video);
+        // Video getVideo(unsigned int index);
         // TODO: sobrecargar operador para setear video
-        void setVideo(unsigned int index);
-        const Video& operator[](unsigned int index) const;
-        // Streaming[i] = Pelicula(Los incr)
+        // void setVideo(unsigned int index);
+        Video* operator[](unsigned int index) const;
+        // Streaming[i] = Pelicula(...)
         unsigned int contarVideos() const;
 };
 

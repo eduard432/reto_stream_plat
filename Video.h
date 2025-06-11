@@ -8,6 +8,7 @@ Fecha de Creación/Modificación: 12/Junio/2025
 #ifndef VIDEO_H
 #define VIDEO_H
 
+// TODO: No lo estamos usando:
 enum Genero {
     drama,
     accion,
@@ -15,23 +16,22 @@ enum Genero {
 };
 
 class Video {
-private:
+protected:
     std::string id;
     std::string nombre;
     unsigned int duracion;
-    Genero genero;
+    std::string genero;
     float calificacionPromedio;
 
 public:
     Video();
-    void setId(std::string newId);
-    void setNombre(std::string newNombre);
-    void setDuracion(unsigned int newDuracion);
-    void setGenero(Genero newGenero);
-    void setCalificacionPromedio(float newCalificacionPromedio);
-
-
-    
+    virtual ~Video();
+    virtual void mostrar() const;
+    // void setId(std::string newId);
+    // void setNombre(std::string newNombre);
+    // void setDuracion(unsigned int newDuracion);
+    // void setGenero(Genero newGenero);
+    // void setCalificacionPromedio(float newCalificacionPromedio);
 
 };
 #endif

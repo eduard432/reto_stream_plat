@@ -11,7 +11,7 @@ Fecha de Creación/Modificación: 12/Junio/2025
 
 class Pelicula: public Video { 
 public:
-    Pelicula();
-
+    void mostrar() const override;
+    Pelicula(const Vector<std::string>& datos);
 };
 #endif

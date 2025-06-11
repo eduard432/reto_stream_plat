@@ -34,8 +34,20 @@ int main() {
             case 1:
                 std::cout << "-----------------" << std::endl;
                 std::cout << "Introduce la ruta del archivo a cargar: ";
-                std::cin >> fileName;
-                sistema.cargarCsv(fileName);
+                // std::cin >> fileName;
+
+                fileName = "./movies.csv";
+
+                if(!sistema.cargarCsv(fileName)) {
+                    std::cout << "Opps hubo un error" << endl;
+                } else {
+                    std::cout << "Archivo: " << fileName << " cargado con éxito" << endl;
+                }
+                
+            break;
+                
+            case 2:
+                sistema.mostrarVideos();
             break;
         
             default:

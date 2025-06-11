@@ -12,6 +12,7 @@ using namespace std;
 Streaming::~Streaming() {
     for (unsigned int i = 0; i < tam_v; i++) {
         delete videos[i];
+        videos[i] = nullptr;
     }
     if(videos) {
         delete[] videos;
@@ -59,7 +60,7 @@ bool Streaming::cargarCsv(std::string fileName) {
         return false;
     }
 
-    cout << "Cargand archivo: " << fileName << endl;
+    cout << "Cargando archivo: " << fileName << endl;
 
     while(getline(file, line)) {
         stringstream ss(line);
@@ -68,55 +69,62 @@ bool Streaming::cargarCsv(std::string fileName) {
         Vector<string> datos;
 
         while(getline(ss, cell, ',')) {
+            if(!cell.length()) 
+                errores++;
             datos.push_Back(cell);
         }
 
-        if(datos.length() < 4) {
+        unsigned int longitud = datos.length();
+
+        if(longitud == 4) {
+            std::cout << "NUeva pelicula" << std::endl;
             Pelicula* pelicula = new Pelicula(datos);
+
+            std::cout << "Punter pelicula: " << pelicula << std::endl;
             if(tam_v >= capacidad_v) {
-                // Podemos aumentar la capacidad 
+                // Debemos aumentar la capacidad de nuestro arreglo
                 reAlocar(capacidad_v + capacidad_v / 2);
             }
             videos[tam_v] = pelicula;
-        } else {
+            tam_v++;
+        } else if(longitud == 7) {
             Serie* serie = new Serie(datos);
             if(tam_v >= capacidad_v) {
-                // Podemos aumentar la capacidad 
+                // Debemos aumentar la capacidad de nuestro arreglo
                 reAlocar(capacidad_v + capacidad_v / 2);
             }
             videos[tam_v] = serie;
+            tam_v++;
+        } else {
+            errores++;
         }
-    }
-}
 
-// Este método igual lo puedes utilizar para validar cuantos datos hay
-// en el CSV que estarás utilizando.
-// Piensa en cual clase debería ir.
-// Regresa "-1" si hay un error al leer el archivo o regresa
-// de 0 a la cantidad de datos en el csv.
-int countDataLinesInCSV(string fileName) {
-    ifstream    file(fileName);
-    int         lineCount = 0;
-    string      line;
-
-    // Contar la cantidad de líneas en el archivo csv
-    if (!file.is_open()) {
-        cerr << "Error al abrir el archivo: " << fileName << endl;
-        return -1;
-    }
-
-    // skip header
-    if(!getline(file, line)) {
-        cerr << "El archivo no tiene header" << endl;
-        file.close();
-        return -1;
-    }
-
-    // Contar lineas 
-    while(getline(file, line)) {
-        lineCount++;    
+        if(errores) {
+            cerr << "Error en la linea: " << line << endl;
+            file.close();
+            return false;
+        }
     }
 
     file.close();
-    return(lineCount);
+    return true;
+}
+
+Video* Streaming::operator[](unsigned int index) const {
+    return videos[index];
+}
+
+unsigned int Streaming::contarVideos() const {
+    return tam_v;
+}
+
+void Streaming::mostrarVideos() const {
+    std::cout << "-----------------" << std::endl;
+    std::cout << "Motrando peliculas: " << std::endl;
+    std::cout << "-----------------" << std::endl;
+    std::cout << "Numero de Videos: " << tam_v << endl;
+
+    for (unsigned int i = 0; i < tam_v; i++) {
+        videos[i]->mostrar();
+    }
 }

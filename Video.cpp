@@ -2,6 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <sstream>
 
-usi
+
+Video::Video() {}

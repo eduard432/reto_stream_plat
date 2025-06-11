@@ -28,10 +28,14 @@ int main() {
         std::cout << "Opción: ";
         std::cin >> decision;
 
+        std::string fileName;
+
         switch (decision) {
             case 1:
-                sistema.cargarDatos();
-                /* code */
+                std::cout << "-----------------" << std::endl;
+                std::cout << "Introduce la ruta del archivo a cargar: ";
+                std::cin >> fileName;
+                sistema.cargarCsv(fileName);
             break;
         
             default:

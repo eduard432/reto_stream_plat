@@ -27,6 +27,7 @@ public:
     Video();
     virtual ~Video();
     virtual void mostrar() const;
+    std::string getId();
     // void setId(std::string newId);
     // void setNombre(std::string newNombre);
     // void setDuracion(unsigned int newDuracion);

@@ -6,6 +6,7 @@
 #include "Streaming.h"
 #include "Pelicula.h"
 #include "Serie.h"
+#include "Episodio.h"
 
 using namespace std;
 
@@ -77,24 +78,34 @@ bool Streaming::cargarCsv(std::string fileName) {
         unsigned int longitud = datos.length();
 
         if(longitud == 4) {
-            std::cout << "NUeva pelicula" << std::endl;
             Pelicula* pelicula = new Pelicula(datos);
 
-            std::cout << "Punter pelicula: " << pelicula << std::endl;
             if(tam_v >= capacidad_v) {
                 // Debemos aumentar la capacidad de nuestro arreglo
                 reAlocar(capacidad_v + capacidad_v / 2);
             }
             videos[tam_v] = pelicula;
             tam_v++;
-        } else if(longitud == 7) {
-            Serie* serie = new Serie(datos);
-            if(tam_v >= capacidad_v) {
-                // Debemos aumentar la capacidad de nuestro arreglo
-                reAlocar(capacidad_v + capacidad_v / 2);
+        } else if(longitud == 6) {
+
+            // Buscamos si ya existe una serie con ese id
+            // datos[0] = id
+            Serie* serie = (Serie*)buscarVideoPorId(datos[0]);
+            Episodio episodio(datos);
+
+            if(!serie) {
+                serie = new Serie(datos);
+                // Agregamos el puntero de esta neuva serie al arreglo
+                // De punteros en la instancia de Streaming.
+                if(tam_v >= capacidad_v) {
+                    // Debemos aumentar la capacidad de nuestro arreglo
+                    reAlocar(capacidad_v + capacidad_v / 2);
+                }
+                videos[tam_v] = serie;
+                tam_v++;
             }
-            videos[tam_v] = serie;
-            tam_v++;
+            serie->agregarEpisodio(episodio);
+            
         } else {
             errores++;
         }
@@ -120,11 +131,32 @@ unsigned int Streaming::contarVideos() const {
 
 void Streaming::mostrarVideos() const {
     std::cout << "-----------------" << std::endl;
-    std::cout << "Motrando peliculas: " << std::endl;
+    std::cout << "Motrando videos: " << std::endl;
     std::cout << "-----------------" << std::endl;
     std::cout << "Numero de Videos: " << tam_v << endl;
 
     for (unsigned int i = 0; i < tam_v; i++) {
         videos[i]->mostrar();
     }
+}
+
+void Streaming::mostrarVideos(std::string id) {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        std::string video_id = videos[i]->getId();
+        if(video_id == id) {
+            videos[i]->mostrar();
+        }
+    }
+}
+
+Video* Streaming::buscarVideoPorId(std::string id) {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        std::string video_id = videos[i]->getId();
+
+        if(video_id == id) {
+            return videos[i];
+        }
+    }
+
+    return nullptr;
 }

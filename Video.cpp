@@ -8,3 +8,7 @@ Video::Video() {}
 Video::~Video() {}
 
 void Video::mostrar() const {}
+
+std::string Video::getId() {
+    return id;
+}

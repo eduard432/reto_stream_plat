@@ -3,15 +3,21 @@ Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
 Descripcion: Implementación de la clase ArregloComplejos
 Fecha de Creación/Modificación: 12/Junio/2025
 */
-#include "Video.h"
 #include <iostream>
+#include "Video.h"
 #include "Vector.h"
+#include "Episodio.h"
 
 #ifndef SERIE_H
 #define SERIE_H
 
 class Serie: public Video {
-public:
-    Serie(const Vector<std::string>& datos);
+    private:
+        Vector<Episodio> episodios;
+    public:
+        void mostrar() const override;
+        void agregarEpisodio(Episodio episodio);
+        Serie(const Vector<std::string>& datos);
+        unsigned int getNumEpisodios() const;
 };
 #endif

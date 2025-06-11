@@ -36,7 +36,7 @@ int main() {
                 std::cout << "Introduce la ruta del archivo a cargar: ";
                 // std::cin >> fileName;
 
-                fileName = "./movies.csv";
+                fileName = "./series.csv";
 
                 if(!sistema.cargarCsv(fileName)) {
                     std::cout << "Opps hubo un error" << endl;

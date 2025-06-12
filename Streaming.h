@@ -27,6 +27,7 @@ class Streaming {
         Video* buscarVideoPorId(std::string id) const;
         Video* buscarVideo(std::string nombre, float calif) const;
         Video* buscarVideo(std::string nombreId) const;
+        Video* buscarVideo(float calif) const;
         // void agregarVideo(Video video);
         // Video getVideo(unsigned int index);
         // TODO: sobrecargar operador para setear video

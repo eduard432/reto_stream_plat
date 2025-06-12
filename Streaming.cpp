@@ -193,7 +193,7 @@ Video* Streaming::buscarVideo(std::string nombre, float calif) const {
         std::string v_nombre = videos[i]->getNombre();
         float v_calif = videos[i]->getCalifProm();
 
-        if(v_calif == calif || v_nombre == nombre) {
+        if(v_calif >= calif || v_nombre == nombre) {
             return videos[i];
         }
     }
@@ -207,6 +207,18 @@ Video* Streaming::buscarVideo(std::string nombreId) const {
         std::string v_id = videos[i]->getId();
 
         if(v_nombre == nombreId || v_id == nombreId) {
+            return videos[i];
+        }
+    }
+
+    return nullptr;
+}
+
+Video* Streaming::buscarVideo(float calif) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        float v_calif = videos[i]->getCalifProm();
+
+        if(v_calif >= calif) {
             return videos[i];
         }
     }

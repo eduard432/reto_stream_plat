@@ -126,6 +126,7 @@ void mostrarEpisodios (const Streaming &streaming) {
     }
 }
 
+// 4. Opción del menu
 void mostrarPeliculas (const Streaming &streaming) {
 
     float calif = 0;
@@ -143,6 +144,7 @@ void mostrarPeliculas (const Streaming &streaming) {
     streaming.mostrarVideos(calif, false);
 }
 
+// 5. Opción del menu
 void calificarVideo (const Streaming &streaming) {
 
     float calif = 0;

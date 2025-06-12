@@ -10,6 +10,7 @@ Fecha de Creación/Modificación: 12/Junio/2025
 
 #include <iostream>
 
+// Limpia la consola en todos los os.
 void limpiarPantalla() {
     #ifdef _WIN32
         system("cls"); // Windows
@@ -20,38 +21,65 @@ void limpiarPantalla() {
     #endif
 }
 
-// 2. Opción del menú
-void mostrarVideos (const Streaming &streaming) {
-    limpiarPantalla();
+// Imprime un separador, para mantener un contexto claro.
+void sPrint() {
+    std::cout << "—————————————————————————————————————————————————————————————————" << std::endl;
+}
+
+// 1. Cargar Archivos
+// Función para obtener la ruta del archivo
+// Válida que el archivo se cargue correctamente
+// Le pasamos sistema para que pueda guardar los datos en esa instancia
+void cargarArchivo(Streaming &sistema) {
+    std::string fileName;
+    sPrint(); // Separador
+    std::cout << "Introduce la ruta del archivo a cargar: ";
+    // std::cin >> fileName;
+
+    fileName = "./series.csv";
+
+    // Reportamos si no pudimos cargar el archivo:
+    if(!sistema.cargarCsv(fileName)) {
+        std::cout << "Opps hubo un error" << endl;
+    } else {
+        std::cout << "Archivo: " << fileName << " cargado con éxito" << endl;
+    }
+}
+
+// 2. Mostrar todos los videos con una cierta calificación:
+void mostrarVideos(const Streaming &streaming) {
     int decision = -1;
 
+    // Desplegamos menu para selecionar tipo de filtro:
     while(decision != 0) {
         
-        std::cout << "-----------------" << std::endl;
+        sPrint();
         std::cout << "Filtrar por:" << std::endl;
-        std::cout << "-----------------" << std::endl;
+        sPrint();
         std::cout << "1. Filtrar por calificacion" << std::endl;
         std::cout << "2. Filtrar por género" << std::endl;
         std::cout << "0. Regresar" << std::endl;
-        std::cout << "-----------------" << std::endl;
-        std::cout << "Opción: ";
+        sPrint();
+        std::cout << "Filtro: ";
+        // Registramos el filtro
         std::cin >> decision;
 
-        limpiarPantalla();
-
+        // Creamos una variable para el genero y la calificacion
         float calif = 0;
-        
         std::string genero;
         int decisionGenero = 0;
 
         
         switch (decision) {
+            // Si elige filtrar por calificación:
             case 1:
-                std::cout << "-----------------" << std::endl;
+                limpiarPantalla();
+                sPrint();
                 std::cout << "Califación minima: ";
                 std::cin >> calif;
-                std::cout << "-----------------" << std::endl;
+                sPrint();
 
+                // Válidamos la calificación:
                 if(calif <= 0) {
                     std::cout << "Calificación no válida" << endl;
                     break;
@@ -60,20 +88,24 @@ void mostrarVideos (const Streaming &streaming) {
                     break;
                 }
 
+                // Mostrar los resultados:
                 streaming.mostrarVideos(calif);
             break;
-
+            // Si elige filtrar por genero
             case 2:
-                std::cout << "-----------------" << std::endl;
+                limpiarPantalla();
+                sPrint();
                 std::cout << "Genero: " << std::endl;
+                sPrint();
                 std::cout << "1. Drama" << std::endl;
                 std::cout << "2. Accion" << std::endl;
                 std::cout << "3. Misterio" << std::endl;
-                std::cout << "-----------------" << std::endl;
+                sPrint();
                 std::cout << "Opción: ";
                 std::cin >> decisionGenero;
+                sPrint();
 
-
+                // Válidamos la calificación:
                 switch (decisionGenero) {
                     case 1:
                         genero = "Drama";
@@ -90,8 +122,9 @@ void mostrarVideos (const Streaming &streaming) {
                     default:
                         std::cout << "Esta opción no existe" << std::endl;
                         break;
-                    }
+                }
 
+                // Mostramos los resultados
                 streaming.mostrarVideosPorGenero(genero);
             break;
         
@@ -104,21 +137,26 @@ void mostrarVideos (const Streaming &streaming) {
 
 // 3. Opción del menú
 void mostrarEpisodios (const Streaming &streaming) {
+    // Solicitamos calificación al usuario:
     float calif = 0;
+    sPrint();
     std::cout << "Calificación mínima: ";
     std::cin >> calif;
+    sPrint();
 
-    if(calif <= 0) {
-        std::cout << "Calificación no válida" << std::endl;
-        return;
-    } else if(calif > 5) {
+    // Vpalidamos la calificación:
+    if(calif <= 0 || calif > 5) {
         std::cout << "La calificación tiene que ser de: de 0-5.0" << std::endl;
         return;
     }
 
-    Serie* serie = (Serie*)streaming.buscarVideo(calif);
+    Serie* serie = (Serie*)streaming.buscarVideo(calif, true);
+
+    // Verificamos si se encontro alguna serie:
     if(serie) {
+        // Mostramos los resultados:
         serie->mostrar();
+        sPrint();
         serie->mostrarEpisodios();
     } else {
         std::cout << "No se encontro niguna serie." << std::endl;
@@ -128,98 +166,123 @@ void mostrarEpisodios (const Streaming &streaming) {
 
 // 4. Opción del menu
 void mostrarPeliculas (const Streaming &streaming) {
-
+    // Solicitamos calificación al usuario:
     float calif = 0;
-
-    std::cout << "-----------------" << std::endl;
-    std::cout << "Califación minima: " << std::endl;
+    sPrint();
+    std::cout << "Califación minima: ";
     std::cin >> calif;
-    std::cout << "-----------------" << std::endl;
+    sPrint();
 
-    if(calif <= 0) {
-        std::cout << "Calificación no válida" << endl;
+    // Válidamos calificación:
+    if(calif <= 0 || calif > 5) {
+        std::cout << "La calificación tiene que ser de: de 0-5.0" << std::endl;
         return;
     }
 
+    // Mostramos el resultado:
     streaming.mostrarVideos(calif, false);
 }
 
 // 5. Opción del menu
 void calificarVideo (const Streaming &streaming) {
 
+    sPrint();
+    // Mostramos los videos en el sistema:
+    streaming.mostrarVideos();
+    sPrint();
+
+    // Solicitamos calificación y id o nobmre al usuario:
     float calif = 0;
     std::string nombreId;
-
-    std::cout << "Ingrese el id, o nombre de la serie: " << std::endl;
+    std::cout << "Ingrese el id, o nombre de la serie: ";
     std::cin >> nombreId;
-    std::cout << "Calificación otorgada: ";
-    std::cin >> calif;
 
-    if(calif <= 0) {
-        std::cout << "Calificación no válida" << endl;
+    // Válidamos el nombre o id
+    if(nombreId.empty()) {
+        std::cout << "Titulo no válido" << std::endl;
         return;
     }
 
+    sPrint();
+    std::cout << "Calificación otorgada: ";
+    std::cin >> calif;
+
+    // Válidamos la calificación
+    if(calif <= 0 || calif > 5) {
+        std::cout << "La calificación tiene que ser de: de 0-5.0" << std::endl;
+        return;
+    }
+    sPrint();
+
+    // Buscamos el video por nombre o id
     Video* video = streaming.buscarVideo(nombreId);
+
+    if(!video) {
+        std::cout << "No se eonctro el video a calificar:" << std::endl;
+        return;
+    }
+
+    // Método para calificar:
     video->calificar(calif);
 
     std::cout << "Video calificado con éxito" << std::endl;
 
 }
 
+// Código de entrada del programa:
 int main() {
     limpiarPantalla();
-        std::cout << "Bienvenido a Netflix" << std::endl;
+    sPrint();
+    std::cout << "Sistema Gestor de Videos" << std::endl;
+    sPrint();
+
+    // Sistema gestor de los dato:
     Streaming sistema;
 
     int decision = -1;
 
+    // Se desplega menu con las respectivas decisiones
     while(decision != 0) {
-        std::cout << "-----------------" << std::endl;
+        sPrint();
         std::cout << "Menu:" << std::endl;
-        std::cout << "-----------------" << std::endl;
+        sPrint();
         std::cout << "1. Cargar archivo de datos" << std::endl;
         std::cout << "2. Mostrar videos por calificación o género "<< std::endl;
         std::cout << "3. Mostrar los episodios de una serie con una calificacion determinada" << std ::endl;
         std::cout << "4. Mostrar películas con cierta calificación" << std ::endl;
         std::cout << "5. Calificar un video" << std ::endl;
         std::cout << "0. Salir" << std ::endl;
-        std::cout << "-----------------" << std::endl;
+        sPrint();
         std::cout << "Opción: ";
         std::cin >> decision;
 
         std::string fileName;
 
+        // Limpiamos la pantalla antes de:
+        // Ejecutar la función correspondiente a cada funcionalidad
         switch (decision) {
             case 1:
                 limpiarPantalla();
-                std::cout << "-----------------" << std::endl;
-                std::cout << "Introduce la ruta del archivo a cargar: ";
-                // std::cin >> fileName;
-
-                fileName = "./series.csv";
-
-                if(!sistema.cargarCsv(fileName)) {
-                    std::cout << "Opps hubo un error" << endl;
-                } else {
-                    std::cout << "Archivo: " << fileName << " cargado con éxito" << endl;
-                }
-                
+                cargarArchivo(sistema);
             break;
                 
             case 2:
+                limpiarPantalla();
                 mostrarVideos(sistema);
             break;
 
             case 3:
+                limpiarPantalla();
                 mostrarEpisodios(sistema);
             break;
 
             case 4:
+                limpiarPantalla();
                 mostrarPeliculas(sistema);
             break;
 
             case 5:
+                limpiarPantalla();
                 calificarVideo(sistema);
             break;
         

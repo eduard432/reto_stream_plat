@@ -16,5 +16,5 @@ Episodio::Episodio(const Vector<std::string>& datos) {
 }
 
 void Episodio::mostrar() const {
-    std::cout << "Episodio: " << episodio << " - Temporada: " << temporada << std::endl;
+    std::cout << "Episodio: " << episodio << " | Temporada: " << temporada << std::endl;
 }

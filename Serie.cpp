@@ -17,7 +17,7 @@ Serie::Serie(const Vector<std::string>& datos) {
 }
 
 void Serie::agregarEpisodio(Episodio episodio) {
-    episodios.push_Back(episodio);
+    episodios.pushBack(episodio);
 }
 
 unsigned int Serie::getNumEpisodios() const {
@@ -25,10 +25,10 @@ unsigned int Serie::getNumEpisodios() const {
 }
 
 void Serie::mostrar() const {
-    std::cout << id << " - " << nombre << " - Duación:";
-    std::cout << duracion << " - Genero: " << genero;
-    std::cout << " Calificación: " << calificacionPromedio << std::endl;
-    std::cout << " Episodios: " << episodios.length() << std::endl;
+    std::cout << id << " | " << nombre << " | Duación:";
+    std::cout << duracion << " | Genero: " << genero;
+    std::cout << " | Calificación: " << calificacionPromedio;
+    std::cout << " | Episodios: " << episodios.length() << std::endl;
 }
 
 void Serie::mostrarEpisodios() const {

@@ -24,10 +24,10 @@ class Streaming {
         void mostrarVideos(float calif) const;
         void mostrarVideos(float calif, bool esSerie) const;
         void mostrarVideosPorGenero(std::string genero) const;
-        Video* buscarVideoPorId(std::string id) const;
+        // Video* buscarVideoPorId(std::string id) const;
         Video* buscarVideo(std::string nombre, float calif) const;
         Video* buscarVideo(std::string nombreId) const;
-        Video* buscarVideo(float calif) const;
+        Video* buscarVideo(float calif, bool esSerie) const;
         // Video getVideo(unsigned int index);
         Video* operator[](unsigned int index) const;
         // Streaming[i] = Pelicula(...)

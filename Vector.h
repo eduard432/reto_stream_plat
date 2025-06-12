@@ -14,6 +14,9 @@ class Vector {
         Vector() {
             re_alloc(2);
         };
+        ~Vector() {
+            delete[] data;
+        }
         void re_alloc(unsigned int new_capacity){
             T* new_data = new T[new_capacity];
 

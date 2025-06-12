@@ -17,5 +17,6 @@ Pelicula::Pelicula(const Vector<std::string>& datos) {
 
 void Pelicula::mostrar() const {
     std::cout << id << " - " << nombre << " - Duación:";
-    std::cout << duracion << " - Genero: " << genero << std::endl;
+    std::cout << duracion << " - Genero: " << genero ;
+    std::cout << " Calificación: " << calificacionPromedio << std::endl;
 }

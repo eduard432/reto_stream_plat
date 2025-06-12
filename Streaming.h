@@ -19,9 +19,14 @@ class Streaming {
         ~Streaming();
         bool cargarCsv(std::string fileName);
         void mostrarVideos() const;
-        void mostrarVideos(std::string id);
+        void mostrarVideos(std::string id) const;
+        void mostrarVideos(float calif) const;
+        void mostrarVideos(float calif, bool esSerie) const;
+        void mostrarVideosPorGenero(std::string genero) const;
         void reAlocar(unsigned int nuevaCapacidad);
-        Video* buscarVideoPorId(std::string id);
+        Video* buscarVideoPorId(std::string id) const;
+        Video* buscarVideo(std::string nombre, float calif) const;
+        Video* buscarVideo(std::string nombreId) const;
         // void agregarVideo(Video video);
         // Video getVideo(unsigned int index);
         // TODO: sobrecargar operador para setear video

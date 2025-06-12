@@ -12,6 +12,9 @@ Fecha de Creación/Modificación: 12/Junio/2025
 class Pelicula: public Video { 
 public:
     void mostrar() const override;
+    bool esSerie() const override {
+        return false;
+    }
     Pelicula(const Vector<std::string>& datos);
 };
 #endif

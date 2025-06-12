@@ -140,7 +140,7 @@ void Streaming::mostrarVideos() const {
     }
 }
 
-void Streaming::mostrarVideos(std::string id) {
+void Streaming::mostrarVideos(std::string id) const {
     for (unsigned int i = 0; i < tam_v; i++) {
         std::string video_id = videos[i]->getId();
         if(video_id == id) {
@@ -149,11 +149,64 @@ void Streaming::mostrarVideos(std::string id) {
     }
 }
 
-Video* Streaming::buscarVideoPorId(std::string id) {
+void Streaming::mostrarVideos(float calif) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        float califProm = videos[i]->getCalifProm();
+        if(califProm >= calif) {
+            videos[i]->mostrar();
+        }
+    }
+}
+
+void Streaming::mostrarVideos(float calif, bool esSerie) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        float califProm = videos[i]->getCalifProm();
+        if(califProm >= calif && videos[i]->esSerie() == esSerie) {
+            videos[i]->mostrar();
+        }
+    }
+}
+
+void Streaming::mostrarVideosPorGenero(std::string genero) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        std::string v_genero = videos[i]->getGenero();
+        if(v_genero == genero) {
+            videos[i]->mostrar();
+        }
+    }
+}
+
+Video* Streaming::buscarVideoPorId(std::string id) const {
     for (unsigned int i = 0; i < tam_v; i++) {
         std::string video_id = videos[i]->getId();
 
         if(video_id == id) {
+            return videos[i];
+        }
+    }
+
+    return nullptr;
+}
+
+Video* Streaming::buscarVideo(std::string nombre, float calif) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        std::string v_nombre = videos[i]->getNombre();
+        float v_calif = videos[i]->getCalifProm();
+
+        if(v_calif == calif || v_nombre == nombre) {
+            return videos[i];
+        }
+    }
+
+    return nullptr;
+}
+
+Video* Streaming::buscarVideo(std::string nombreId) const {
+    for (unsigned int i = 0; i < tam_v; i++) {
+        std::string v_nombre = videos[i]->getNombre();
+        std::string v_id = videos[i]->getId();
+
+        if(v_nombre == nombreId || v_id == nombreId) {
             return videos[i];
         }
     }

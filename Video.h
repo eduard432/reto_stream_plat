@@ -8,13 +8,6 @@ Fecha de Creación/Modificación: 12/Junio/2025
 #ifndef VIDEO_H
 #define VIDEO_H
 
-// TODO: No lo estamos usando:
-enum Genero {
-    drama,
-    accion,
-    misterio
-};
-
 class Video {
 protected:
     std::string id;
@@ -22,12 +15,18 @@ protected:
     unsigned int duracion;
     std::string genero;
     float calificacionPromedio;
+    unsigned int numCalifs = 0;
 
 public:
     Video();
     virtual ~Video();
-    virtual void mostrar() const;
-    std::string getId();
+    virtual void mostrar() const = 0;
+    virtual bool esSerie() const = 0;
+    std::string getId() const;
+    float getCalifProm() const;
+    std::string getGenero() const;
+    std::string getNombre() const;
+    void calificar(float calif);
     // void setId(std::string newId);
     // void setNombre(std::string newNombre);
     // void setDuracion(unsigned int newDuracion);

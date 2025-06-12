@@ -15,8 +15,12 @@ class Serie: public Video {
     private:
         Vector<Episodio> episodios;
     public:
+        bool esSerie() const override {
+            return true;
+        }
         void mostrar() const override;
         void agregarEpisodio(Episodio episodio);
+        void mostrarEpisodios() const;
         Serie(const Vector<std::string>& datos);
         unsigned int getNumEpisodios() const;
 };

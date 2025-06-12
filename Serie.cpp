@@ -27,5 +27,13 @@ unsigned int Serie::getNumEpisodios() const {
 void Serie::mostrar() const {
     std::cout << id << " - " << nombre << " - Duación:";
     std::cout << duracion << " - Genero: " << genero;
+    std::cout << " Calificación: " << calificacionPromedio << std::endl;
     std::cout << " Episodios: " << episodios.length() << std::endl;
+}
+
+void Serie::mostrarEpisodios() const {
+    for (unsigned int i = 0; i < episodios.length(); i++) {
+        Episodio episodio = episodios[i];
+        episodio.mostrar();
+    }
 }

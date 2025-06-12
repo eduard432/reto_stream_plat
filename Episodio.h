@@ -17,6 +17,7 @@ class Episodio {
     public:
         Episodio();
         Episodio(const Vector<std::string>& datos);
+        void mostrar() const;
 };
 
 

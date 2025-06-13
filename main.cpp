@@ -247,9 +247,9 @@ int main() {
         std::cout << "Menu:" << std::endl;
         sPrint();
         std::cout << "1. Cargar archivo de datos" << std::endl;
-        std::cout << "2. Mostrar videos por calificación o genero "<< std::endl;
+        std::cout << "2. Mostrar videos por calificacion o genero "<< std::endl;
         std::cout << "3. Mostrar los episodios de una serie con una calificacion determinada" << std ::endl;
-        std::cout << "4. Mostrar peliculas con cierta calificación" << std ::endl;
+        std::cout << "4. Mostrar peliculas con cierta calificacion" << std ::endl;
         std::cout << "5. Calificar un video" << std ::endl;
         std::cout << "0. Salir" << std ::endl;
         sPrint();

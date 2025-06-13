@@ -1,6 +1,6 @@
 /*
 Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
-Descripcion: Implementación de la clase ArregloComplejos
+Descripcion: Implementación de la clase Video
 Fecha de Creación/Modificación: 12/Junio/2025
 */
 
@@ -8,6 +8,7 @@ Fecha de Creación/Modificación: 12/Junio/2025
 #ifndef VIDEO_H
 #define VIDEO_H
 
+// Definimos una clase abastracta como base para las clases Pelicula y Serie:
 class Video {
     public:
         // Constructor y destructor

@@ -23,7 +23,7 @@ void limpiarPantalla() {
 
 // Imprime un separador, para mantener un contexto claro.
 void sPrint() {
-    std::cout << "-----------------------------------------------------------------" << std::endl;
+    std::cout << "—————————————————————————————————————————————————————————————————" << std::endl;
 }
 
 // 1. Cargar Archivos

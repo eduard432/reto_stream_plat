@@ -1,5 +1,5 @@
 /*
-Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Autores: Carlos Marlon García Arráez - Juan Eduardo Barrón Cisneros
 Descripcion: Implemenetacíón de la clase Serie
 Fecha de Creación/Modificación: 12/Junio/2025
 */
@@ -41,9 +41,9 @@ unsigned int Serie::getNumEpisodios() const {
 
 // Método para mostrar la serie (sobrecarga)
 void Serie::mostrar() const {
-    std::cout << id << " | " << nombre << " | Duación:";
+    std::cout << id << " | " << nombre << " | Duacion:";
     std::cout << duracion << " | Genero: " << genero;
-    std::cout << " | Calificación: " << calificacionPromedio;
+    std::cout << " | Calificacion: " << calificacionPromedio;
     std::cout << " | Episodios: " << episodios.length() << std::endl;
 }
 

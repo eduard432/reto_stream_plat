@@ -1,5 +1,5 @@
 /*
-Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Autores: Carlos Marlon García Arráez - Juan Eduardo Barrón Cisneros
 Descripcion: Implemenetacíón de la clase Pelicula
 Fecha de Creación/Modificación: 12/Junio/2025
 */
@@ -34,7 +34,7 @@ Pelicula::Pelicula(const Vector<std::string>& datos) {
 
 // Método para mostrar pelicula (sobrecarga)
 void Pelicula::mostrar() const {
-    std::cout << id << " | " << nombre << " | Duación:";
+    std::cout << id << " | " << nombre << " | Duacion:";
     std::cout << duracion << " | Genero: " << genero ;
-    std::cout << " | Calificación: " << calificacionPromedio << std::endl;
+    std::cout << " | Calificacion: " << calificacionPromedio << std::endl;
 }

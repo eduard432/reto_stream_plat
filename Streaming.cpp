@@ -1,5 +1,5 @@
 /*
-Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Autores: Carlos Marlon García Arráez - Juan Eduardo Barrón Cisneros
 Descripcion: Implemenetacíón de la clase Streaming
 Fecha de Creación/Modificación: 12/Junio/2025
 */
@@ -190,7 +190,7 @@ void Streaming::mostrarVideos(float calif) const {
 
     // Validamos si se encontro algun video
     if(found == 0)
-        std::cout << "Ningún video encontrado" << std::endl;
+        std::cout << "Ningun video encontrado" << std::endl;
 }
 
 // Función para mostrar todos los videos con calificación mayor a calif y si es serie o no
@@ -225,7 +225,7 @@ void Streaming::mostrarVideosPorGenero(std::string genero) const {
 
     // Validamos si se encontro algun video
     if(found == 0)
-        std::cout << "Ningún video encontrado" << std::endl;
+        std::cout << "Ningun video encontrado" << std::endl;
 }
 
 

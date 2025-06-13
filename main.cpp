@@ -1,5 +1,5 @@
 /*
-Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Autores: Carlos Marlon García Arráez - Juan Eduardo Barrón Cisneros
 Descripcion: Punto de entrada del programa
 Fecha de Creación/Modificación: 12/Junio/2025
 */
@@ -23,7 +23,7 @@ void limpiarPantalla() {
 
 // Imprime un separador, para mantener un contexto claro.
 void sPrint() {
-    std::cout << "—————————————————————————————————————————————————————————————————" << std::endl;
+    std::cout << "-----------------------------------------------------------------" << std::endl;
 }
 
 // 1. Cargar Archivos
@@ -42,7 +42,7 @@ void cargarArchivo(Streaming &sistema) {
     if(!sistema.cargarCsv(fileName)) {
         std::cout << "Opps hubo un error" << endl;
     } else {
-        std::cout << "Archivo: " << fileName << " cargado con éxito" << endl;
+        std::cout << "Archivo: " << fileName << " cargado con exito" << endl;
     }
 }
 
@@ -57,7 +57,7 @@ void mostrarVideos(const Streaming &streaming) {
         std::cout << "Filtrar por:" << std::endl;
         sPrint();
         std::cout << "1. Filtrar por calificacion" << std::endl;
-        std::cout << "2. Filtrar por género" << std::endl;
+        std::cout << "2. Filtrar por genero" << std::endl;
         std::cout << "0. Regresar" << std::endl;
         sPrint();
         std::cout << "Filtro: ";
@@ -81,10 +81,10 @@ void mostrarVideos(const Streaming &streaming) {
 
                 // Válidamos la calificación:
                 if(calif <= 0) {
-                    std::cout << "Calificación no válida" << endl;
+                    std::cout << "Calificacion no válida" << endl;
                     break;
                 } else if(calif > 5) {
-                    std::cout << "La calificación tiene que ser de: de 0-5.0" << std::endl;
+                    std::cout << "La calificacion tiene que ser de: de 0-5.0" << std::endl;
                     break;
                 }
 
@@ -101,7 +101,7 @@ void mostrarVideos(const Streaming &streaming) {
                 std::cout << "2. Accion" << std::endl;
                 std::cout << "3. Misterio" << std::endl;
                 sPrint();
-                std::cout << "Opción: ";
+                std::cout << "Opcion: ";
                 std::cin >> decisionGenero;
                 sPrint();
 
@@ -247,13 +247,13 @@ int main() {
         std::cout << "Menu:" << std::endl;
         sPrint();
         std::cout << "1. Cargar archivo de datos" << std::endl;
-        std::cout << "2. Mostrar videos por calificación o género "<< std::endl;
+        std::cout << "2. Mostrar videos por calificación o genero "<< std::endl;
         std::cout << "3. Mostrar los episodios de una serie con una calificacion determinada" << std ::endl;
-        std::cout << "4. Mostrar películas con cierta calificación" << std ::endl;
+        std::cout << "4. Mostrar peliculas con cierta calificación" << std ::endl;
         std::cout << "5. Calificar un video" << std ::endl;
         std::cout << "0. Salir" << std ::endl;
         sPrint();
-        std::cout << "Opción: ";
+        std::cout << "Opcion: ";
         std::cin >> decision;
 
         std::string fileName;
@@ -285,9 +285,13 @@ int main() {
                 limpiarPantalla();
                 calificarVideo(sistema);
             break;
+
+            case 0:
+
+            break;
         
             default:
-                std::cout << "Opción no válida" << std::endl;
+                std::cout << "Opción no valida" << std::endl;
             break;
         }
     }

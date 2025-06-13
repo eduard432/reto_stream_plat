@@ -1,5 +1,5 @@
 /*
-Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Autores: Carlos Marlon García Arráez - Juan Eduardo Barrón Cisneros
 Descripcion: Definición de la clase Serie
 Fecha de Creación/Modificación: 12/Junio/2025
 */

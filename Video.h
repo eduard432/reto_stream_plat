@@ -1,6 +1,6 @@
 /*
 Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
-Descripcion: Implementación de la clase Video
+Descripcion: Definición de la clase Video
 Fecha de Creación/Modificación: 12/Junio/2025
 */
 

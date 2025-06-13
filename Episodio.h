@@ -12,7 +12,7 @@ Fecha de Creación/Modificación: 12/Junio/2025
 
 class Episodio {
     private:
-        std::string episodio;
+        std::string titulo;
         std::string temporada;
     public:
         Episodio();

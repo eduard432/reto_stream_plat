@@ -4,7 +4,7 @@
 
 Episodio::Episodio() {}
 
-// Constructor de episodio, recibimos el vector con toda la información necesaria
+// Constructor de titulo, recibimos el vector con toda la información necesaria
 Episodio::Episodio(const Vector<std::string>& datos) {
     // [0]: ID
     // [1]: Nombre
@@ -12,16 +12,16 @@ Episodio::Episodio(const Vector<std::string>& datos) {
     // [3]: Genero
     // [4]: Episodio
     // [5]: Temporada
-    episodio = datos[4];
+    titulo = datos[4];
     temporada = datos[5];
 
-    // Se válidan los datos de episodio
+    // Se válidan los datos de titulo
     if(datos[4].empty() || datos[5].empty()) {
         throw std::invalid_argument("Faltan datos - Episodio");
     }
 }
 
-// Método para mostrar episodio
+// Método para mostrar titulo
 void Episodio::mostrar() const {
-    std::cout << "Episodio: " << episodio << " | Temporada: " << temporada << std::endl;
+    std::cout << "Episodio: " << titulo << " | Temporada: " << temporada << std::endl;
 }

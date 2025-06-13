@@ -100,7 +100,7 @@ bool Streaming::cargarCsv(std::string fileName) {
         unsigned int longitud = datos.length();
 
         // Si tiene 4 datos es una pelicula
-        // Si tiene 6 datos es un episodio de una serie
+        // Si tiene 6 datos es un titulo de una serie
         if(longitud == 4) {
             // Creamos un puntero apuntando a una nueva instancia de pelicula
             Pelicula* pelicula = new Pelicula(datos);
@@ -118,8 +118,8 @@ bool Streaming::cargarCsv(std::string fileName) {
             // datos[0] = id
             Serie* serie = (Serie*)buscarVideo(datos[0]);
 
-            // Creamos una nueva instancia del episodio a guardar
-            Episodio episodio(datos);
+            // Creamos una nueva instancia del titulo a guardar
+            Episodio titulo(datos);
 
             // Si no encontramos una serie, creamos una y la agregamos al arreglo
             if(!serie) {
@@ -134,8 +134,8 @@ bool Streaming::cargarCsv(std::string fileName) {
                 tam_v++;
             }
 
-            // A la previa serie o a la nueva, le agregamos este nuevo episodio:
-            serie->agregarEpisodio(episodio);
+            // A la previa serie o a la nueva, le agregamos este nuevo titulo:
+            serie->agregarEpisodio(titulo);
             
         } else {
             // Aumentamos el indice si hay algun error

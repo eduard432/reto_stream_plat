@@ -9,29 +9,34 @@ Fecha de Creación/Modificación: 12/Junio/2025
 #define VIDEO_H
 
 class Video {
-protected:
-    std::string id;
-    std::string nombre;
-    unsigned int duracion;
-    std::string genero;
-    float calificacionPromedio;
-    unsigned int numCalifs = 0;
+    public:
+        // Constructor y destructor
+        Video();
+        virtual ~Video();
 
-public:
-    Video();
-    virtual ~Video();
-    virtual void mostrar() const = 0;
-    virtual bool esSerie() const = 0;
-    std::string getId() const;
-    float getCalifProm() const;
-    std::string getGenero() const;
-    std::string getNombre() const;
-    void calificar(float calif);
-    // void setId(std::string newId);
-    // void setNombre(std::string newNombre);
-    // void setDuracion(unsigned int newDuracion);
-    // void setGenero(Genero newGenero);
-    // void setCalificacionPromedio(float newCalificacionPromedio);
+        // Podemos usar dynamic_cast o este atributo para saber si
+        // es una serie o pelicula
+        virtual bool esSerie() const = 0;
 
+        // Getters:
+        float getCalifProm() const;
+        std::string getGenero() const;
+        std::string getId() const;
+        std::string getNombre() const;
+
+        // Método virtual puro que se hereda:
+        virtual void mostrar() const = 0;
+
+        // Método para cambiar la calificaicón promedio:
+        void calificar(float calif);
+    protected:
+        // Información del video:
+        float calificacionPromedio;
+        std::string genero;
+        std::string id;
+        std::string nombre;
+        unsigned int duracion;
+        // Variable útil para agregar calificaciones:
+        unsigned int vecesCalif = 0;
 };
 #endif

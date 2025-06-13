@@ -31,6 +31,6 @@ std::string Video::getNombre() const {
 // Se toma la calificación aanterior y el numero de veces que se ha calificado el video
 // para usar la siguiente formula y promediar con la nueva calif
 void Video::calificar(float calif) {
-    calificacionPromedio = (calificacionPromedio * numCalifs + calif) / (numCalifs + 1);
-    numCalifs++;
+    calificacionPromedio = (calificacionPromedio * vecesCalif + calif) / (vecesCalif + 1);
+    vecesCalif++;
 }

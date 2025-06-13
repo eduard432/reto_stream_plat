@@ -24,7 +24,7 @@ Pelicula::Pelicula(const Vector<std::string>& datos) {
     genero = datos[3];
 }
 
-// Función para mostrar pelicula (sobrecarga)
+// Método para mostrar pelicula (sobrecarga)
 void Pelicula::mostrar() const {
     std::cout << id << " | " << nombre << " | Duación:";
     std::cout << duracion << " | Genero: " << genero ;

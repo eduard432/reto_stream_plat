@@ -157,11 +157,8 @@ bool Streaming::cargarCsv(std::string fileName) {
     return true;
 }
 
-Video* Streaming::operator[](unsigned int index) const {
-    return videos[index];
-}
-
-unsigned int Streaming::contarVideos() const {
+// Getter de tamaño:
+unsigned int Streaming::getTam() const {
     return tam_v;
 }
 
@@ -170,15 +167,6 @@ void Streaming::mostrarVideos() const {
     // Recorremos el arreglo de videos:
     for (unsigned int i = 0; i < tam_v; i++) {
         videos[i]->mostrar();
-    }
-}
-
-void Streaming::mostrarVideos(std::string id) const {
-    for (unsigned int i = 0; i < tam_v; i++) {
-        std::string video_id = videos[i]->getId();
-        if(video_id == id) {
-            videos[i]->mostrar();
-        }
     }
 }
 
@@ -234,30 +222,6 @@ void Streaming::mostrarVideosPorGenero(std::string genero) const {
         std::cout << "Ningún video encontrado" << std::endl;
 }
 
-// Video* Streaming::buscarVideoPorId(std::string id) const {
-//     for (unsigned int i = 0; i < tam_v; i++) {
-//         std::string video_id = videos[i]->getId();
-
-//         if(video_id == id) {
-//             return videos[i];
-//         }
-//     }
-
-//     return nullptr;
-// }
-
-Video* Streaming::buscarVideo(std::string nombre, float calif) const {
-    for (unsigned int i = 0; i < tam_v; i++) {
-        std::string v_nombre = videos[i]->getNombre();
-        float v_calif = videos[i]->getCalifProm();
-
-        if(v_calif >= calif || v_nombre == nombre) {
-            return videos[i];
-        }
-    }
-
-    return nullptr;
-}
 
 // Función para buscar video a partir del nombre o el id del video:
 Video* Streaming::buscarVideo(std::string nombreId) const {
@@ -282,7 +246,9 @@ Video* Streaming::buscarVideo(float calif, bool esSerie) const {
         float v_calif = videos[i]->getCalifProm();
         bool v_esSerie = videos[i]->esSerie();
 
+        // Verificamos is coinciden
         if(v_calif >= calif && esSerie == v_esSerie) {
+             // Regresamos lo encontrado:
             return videos[i];
         }
     }

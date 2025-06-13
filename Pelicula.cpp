@@ -1,6 +1,14 @@
+/*
+Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Descripcion: Implemenetacíón de la clase Pelicula
+Fecha de Creación/Modificación: 12/Junio/2025
+*/
+
+
+#include <iostream>
+
 #include "Vector.h"
 #include "Pelicula.h"
-#include <iostream>
 
 using namespace std;
 

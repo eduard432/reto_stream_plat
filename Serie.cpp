@@ -1,5 +1,12 @@
-#include "Serie.h"
+/*
+Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Descripcion: Implemenetacíón de la clase Serie
+Fecha de Creación/Modificación: 12/Junio/2025
+*/
+
 #include <iostream>
+
+#include "Serie.h"
 #include "Vector.h"
 #include "Episodio.h"
 

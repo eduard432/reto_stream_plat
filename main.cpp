@@ -1,6 +1,6 @@
 /*
 Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
-Descripcion: Implementación de la clase ArregloComplejos
+Descripcion: Punto de entrada del programa
 Fecha de Creación/Modificación: 12/Junio/2025
 */
 

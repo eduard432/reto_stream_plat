@@ -1,7 +1,14 @@
-#include "Video.h"
+/*
+Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Descripcion: Implemenetacíón de la clase Video
+Fecha de Creación/Modificación: 12/Junio/2025
+*/
+
 
 #include <iostream>
 #include <fstream>
+
+#include "Video.h"
 
 // definimos los constructores:
 Video::Video() {}

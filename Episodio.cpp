@@ -1,3 +1,9 @@
+/*
+Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Descripcion: Implemenetacíón de la clase Episodio
+Fecha de Creación/Modificación: 12/Junio/2025
+*/
+
 #include "Episodio.h"
 #include "Vector.h"
 #include <iostream>

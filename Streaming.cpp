@@ -1,8 +1,14 @@
+/*
+Autores: Carlos Marlon García Arráez Juan Eduardo Barrón Cisneros
+Descripcion: Implemenetacíón de la clase Streaming
+Fecha de Creación/Modificación: 12/Junio/2025
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Vector.h"
 
+#include "Vector.h"
 #include "Streaming.h"
 #include "Pelicula.h"
 #include "Serie.h"

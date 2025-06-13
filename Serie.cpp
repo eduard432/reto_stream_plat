@@ -23,7 +23,7 @@ Serie::Serie(const Vector<std::string>& datos) {
 }
 
 // Método para agregar episodios a la serie
-void Serie::agregarEpisodio(Episodio titulo) {
+void Serie::agregarEpisodio(const Episodio& titulo) {
     episodios.pushBack(titulo);
 }
 
@@ -42,8 +42,13 @@ void Serie::mostrar() const {
 
 // Método para mostrar episodios
 void Serie::mostrarEpisodios() const {
+    unsigned int found = 0;
     for (unsigned int i = 0; i < episodios.length(); i++) {
         Episodio titulo = episodios[i];
         titulo.mostrar();
+        found++;
+    }
+    if(found == 0) {
+        std::cout << "Ningún episodio encontrado" << std::endl;
     }
 }

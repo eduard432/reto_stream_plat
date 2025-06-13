@@ -19,7 +19,7 @@ class Serie: public Video {
             return true;
         }
         void mostrar() const override;
-        void agregarEpisodio(Episodio titulo);
+        void agregarEpisodio(const Episodio& titulo);
         void mostrarEpisodios() const;
         Serie(const Vector<std::string>& datos);
         unsigned int getNumEpisodios() const;
